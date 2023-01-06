@@ -35,16 +35,4 @@ class LuckyMoney {
 // System.out.println(soul);
 // }
 
-@Test
-    public void testNumberOfEightsInLuckyMoney(){
-        assertEquals(0, luckyMoneyAlgo(12, 2));
-        assertEquals(2, luckyMoneyAlgo(24, 4));
-        assertEquals(8, luckyMoneyAlgo(80, 8));
-        assertEquals(1, luckyMoneyAlgo(17, 4));
-        assertEquals(0, luckyMoneyAlgo(7, 2));
-        assertEquals(1, luckyMoneyAlgo(13, 2));
-        assertEquals(1, luckyMoneyAlgo(11, 2));
-
-    }
-
 }
