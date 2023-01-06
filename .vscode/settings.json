@@ -1,0 +1,13 @@
+{
+    "java.project.referencedLibraries": {
+        "include": [
+            "lib/**/*.jar",
+            "junit-jupiter-api-5.9.1.jar",
+            "junit-platform-console-standalone-1.7.0-M1.jar",
+            "testcontainers-1.17.6.jar"
+        ],
+        "exclude": [
+            "/Users/chintuvedanth/Desktop/junit-4.12.jar"
+        ]
+    }
+}
