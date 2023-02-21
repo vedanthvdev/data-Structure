@@ -1,45 +1,45 @@
 
 class LuckyMoney {
+    int temp;
+    int numOfGifteeThatCanGet8;
 
-
-    public static int luckyMoneyAlgo(int money, int giftee){
-        int max_luck = money/8;
-        int temp = 0;
-
-        //error conditions
-        if(money<0 || money >100 || giftee<0 || giftee > 10){
-            try {
-                throw new Exception("Invalid input field \n-- > money: " + money + "\n-- > giftee: " + giftee);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            return 0;
-        }
+    public int luckyMoneyAlgo(int money, int giftee) {
+        numOfGifteeThatCanGet8 = money / 8;
+        temp = numOfGifteeThatCanGet8;
 
         //if all the giftees can get 8
-        if(max_luck>=giftee){
+        if (numOfGifteeThatCanGet8 >= giftee) {
             return giftee;
-        }
-
-        else{
-            int max_eights = 8 * max_luck;
-            if(((giftee - max_luck) == 1 ) && ((money - max_eights)==4 || (money - max_eights)== 0) || (money-max_eights < max_luck)){
-                temp = max_luck - 1 ;
-            }else{
-                temp = max_luck;
-                int noOfPeopleThatWillBePaidfterEight = money - max_eights + max_luck;
-                //10-4 condition
-                if( giftee > noOfPeopleThatWillBePaidfterEight ){
-                    temp = 0;
-                }
+        }else {
+            for (int i = 0; i < numOfGifteeThatCanGet8; i++) {
+                algo(money, giftee);
             }
-            
+
         }
         return temp;
 
     }
-public static void main(String[] args) { 
-int soul = LuckyMoney.luckyMoneyAlgo(10,11);
+    
+    public void algo(int money, int giftee) {
+        int maxAmountWith8 = 8 * numOfGifteeThatCanGet8;
+
+        int amountRemainingAfterGiving8s = money - maxAmountWith8;
+        int peopleRemainingAfterGiving8s = giftee - numOfGifteeThatCanGet8;
+        
+        if (
+            // When one giftee is remaining check if he will get 4/0 if he does reduce the number of people getting 8(First three in if block)
+            (peopleRemainingAfterGiving8s == 1)
+                    && (amountRemainingAfterGiving8s == 4 || amountRemainingAfterGiving8s == 0)
+                    // if the remaining giftees who didn't get 8 exceed the money left
+                    || (amountRemainingAfterGiving8s < peopleRemainingAfterGiving8s)) {
+                temp--;
+                numOfGifteeThatCanGet8--;
+            }
+    }
+    
+public static void main(String[] args) {
+LuckyMoney luckyMoney = new LuckyMoney();
+int soul = luckyMoney.luckyMoneyAlgo(60,19);
 System.out.println(soul);
 }
 
